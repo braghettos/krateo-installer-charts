@@ -1,0 +1,5 @@
+# Helm dependency build artifacts (rebuilt by CI)
+charts/*/charts/
+charts/*/Chart.lock
+*.tgz
+.packaged/

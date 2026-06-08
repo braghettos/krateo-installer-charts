@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "krateo-autopilot values",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "global": {
+      "type": "object",
+      "description": "Global values shared across charts.",
+      "additionalProperties": true
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Namespace where the autopilot resources are installed."
+    },
+    "geminiApiKey": {
+      "type": "object",
+      "description": "Reference to an existing secret holding the Gemini API key.",
+      "additionalProperties": false,
+      "properties": {
+        "secretName": {
+          "type": "string"
+        },
+        "secretKey": {
+          "type": "string"
+        }
+      }
+    },
+    "models": {
+      "type": "object",
+      "description": "Model configurations, keyed by an arbitrary alias.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vertexAI": {
+      "type": "object",
+      "description": "Vertex AI provider configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "secretName": {
+          "type": "string"
+        }
+      }
+    },
+    "mcpServers": {
+      "type": "object",
+      "description": "Remote MCP servers, keyed by an arbitrary alias.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "description": "Agents to deploy, keyed by agent name.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "modelConfig": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "prompts": {
+      "type": "object",
+      "description": "Prompts configuration.",
+      "additionalProperties": true,
+      "properties": {
+        "language": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

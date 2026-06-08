@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "otel-collector-daemonset values",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "global": {
+      "type": "object",
+      "description": "Global values shared across charts.",
+      "additionalProperties": true
+    },
+    "opentelemetry-collector": {
+      "type": "object",
+      "description": "Values forwarded to the upstream opentelemetry-collector subchart.",
+      "additionalProperties": true,
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["deployment", "daemonset", "statefulset"]
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "command": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "clusterRole": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "presets": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "config": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "extraEnvs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}
