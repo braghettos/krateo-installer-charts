@@ -21,6 +21,9 @@ image:
 service:
   type: ClusterIP
   port: 8000
+  # For HA (replicaCount > 1) set to ClientIP so Streamable-HTTP sessions stay on one pod.
+  sessionAffinity: ""
+  sessionAffinityTimeoutSeconds: 10800
 
 # MCP transport. "http" = Streamable-HTTP at /mcp (kagent STREAMABLE_HTTP compatible).
 # "sse" serves /sse but kagent's SSE client can't complete the handshake.

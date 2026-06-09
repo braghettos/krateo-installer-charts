@@ -108,6 +108,10 @@
         }
       },
       "description": "Prompts configuration."
+    },
+    "hitlApproval": {
+      "type": "boolean",
+      "description": "HITL approval gate for mutating k8s tools. true=pause for approval (safe); false=autonomous remediation."
     }
   }
 }

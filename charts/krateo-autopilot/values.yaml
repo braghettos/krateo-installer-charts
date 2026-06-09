@@ -1,5 +1,11 @@
 namespace: krateo-system
 
+# Human-in-the-loop approval gate for mutating Kubernetes tools (k8s_apply_manifest,
+# k8s_patch_resource, k8s_delete_resource, k8s_scale, ...). true (default, safe): the
+# k8s-agent and autopilot pause for approval before changing the cluster. false: they
+# execute remediations autonomously (no approval) — use for closed-loop automation.
+hitlApproval: true
+
 # Gemini API key secret — must already exist in the namespace
 geminiApiKey:
   secretName: gemini-api-key

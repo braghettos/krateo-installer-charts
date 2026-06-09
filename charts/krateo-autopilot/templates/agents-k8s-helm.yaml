@@ -32,6 +32,7 @@ spec:
           apiGroup: kagent.dev
           kind: RemoteMCPServer
           name: kagent-tool-server
+{{- if .Values.hitlApproval }}
           requireApproval:
             - k8s_apply_manifest
             - k8s_create_resource
@@ -41,6 +42,7 @@ spec:
             - k8s_execute_command
             - k8s_rollout
             - k8s_scale
+{{- end }}
           toolNames:
             - k8s_get_resources
             - k8s_describe_resource

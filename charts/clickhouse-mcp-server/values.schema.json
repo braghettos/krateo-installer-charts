@@ -48,6 +48,20 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 65535
+        },
+        "sessionAffinity": {
+          "type": "string",
+          "enum": [
+            "",
+            "None",
+            "ClientIP"
+          ],
+          "description": "Service sessionAffinity. ClientIP pins streamable-http sessions to one pod (needed if replicaCount > 1)."
+        },
+        "sessionAffinityTimeoutSeconds": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "ClientIP affinity timeout."
         }
       }
     },

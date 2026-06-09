@@ -7,6 +7,16 @@ metadata:
     app.kubernetes.io/part-of: krateo-observability-stack
 spec:
   type: {{ .Values.service.type }}
+{{- if .Values.service.sessionAffinity }}
+  # Pin a client's Streamable-HTTP session to one pod so replicaCount can be > 1
+  # without "400 No valid session ID" across round-robined pods.
+  sessionAffinity: {{ .Values.service.sessionAffinity }}
+{{- if .Values.service.sessionAffinityTimeoutSeconds }}
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: {{ .Values.service.sessionAffinityTimeoutSeconds }}
+{{- end }}
+{{- end }}
   selector:
     app: clickhouse-mcp-server
   ports:
