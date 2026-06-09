@@ -3,6 +3,12 @@
   "title": "frontend-crd values",
   "type": "object",
   "additionalProperties": false,
-  "properties": {},
+  "properties": {
+    "global": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Helm global values (injected by the composition runtime)."
+    }
+  },
   "description": "Dedicated CRD chart for frontend (golden rule: CRDs in a separate chart, separate lifecycle). No tunable values."
 }

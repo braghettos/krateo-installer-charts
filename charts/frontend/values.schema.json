@@ -298,6 +298,11 @@
       "additionalProperties": true,
       "description": "Free-form extra environment variables for the frontend container.",
       "title": "Environment variables"
+    },
+    "global": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Helm global values (injected by the composition runtime)."
     }
   },
   "description": "Krateo Frontend blueprint \u2014 full-coverage schema (chart 1.0.10)."

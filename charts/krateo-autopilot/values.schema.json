@@ -112,6 +112,11 @@
     "hitlApproval": {
       "type": "boolean",
       "description": "HITL approval gate for mutating k8s tools. true=pause for approval (safe); false=autonomous remediation."
+    },
+    "global": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Helm global values (injected by the composition runtime)."
     }
   }
 }
