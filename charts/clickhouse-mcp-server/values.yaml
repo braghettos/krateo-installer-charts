@@ -1,0 +1,49 @@
+# clickhouse-mcp-server — ClickHouse MCP server for kagent, as a composition.
+# Installs into the krateo namespace (krateo-system); kagent RemoteMCPServer
+# points at http://clickhouse-mcp-server.krateo-system.svc:8000/sse.
+
+global: {}
+
+replicaCount: 2
+
+image:
+  repository: mcp/clickhouse
+  tag: "0.2.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+# ClickHouse connection. Host points at the ClickStack ClickHouse headless
+# Service (HTTP interface, port 8123) in the clickhouse namespace.
+clickhouse:
+  host: krateo-clickstack-clickhouse-clickhouse-headless.krateo-system.svc
+  port: 8123
+  secure: false
+  verify: false
+  database: default
+
+# Credentials Secret the MCP server uses to connect to ClickHouse.
+# Default ClickHouse user with empty password (read-only SELECT access).
+credentials:
+  enabled: true
+  secretName: mcp-clickhouse-credentials
+  username: default
+  password: ""
+
+# Krateo endpointRef Secret for the ClickHouse HTTP interface, consumed by the
+# portal composition-events RESTAction (replaces install.sh phase 4). Created in
+# this release's namespace (krateo-system).
+endpointSecret:
+  enabled: true
+  secretName: clickhouse-internal-endpoint
+  serverUrl: "http://krateo-clickstack-clickhouse-clickhouse-headless.krateo-system.svc:8123"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi

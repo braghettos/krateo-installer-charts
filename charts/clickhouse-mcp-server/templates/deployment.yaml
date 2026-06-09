@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clickhouse-mcp-server
+  labels:
+    app.kubernetes.io/name: clickhouse-mcp-server
+    app.kubernetes.io/component: mcp-server
+    app.kubernetes.io/part-of: krateo-observability-stack
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: clickhouse-mcp-server
+  template:
+    metadata:
+      labels:
+        app: clickhouse-mcp-server
+        app.kubernetes.io/name: clickhouse-mcp-server
+    spec:
+      containers:
+        - name: mcp-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: mcp
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          env:
+            - name: CLICKHOUSE_HOST
+              value: {{ .Values.clickhouse.host | quote }}
+            - name: CLICKHOUSE_PORT
+              value: {{ .Values.clickhouse.port | quote }}
+            - name: CLICKHOUSE_SECURE
+              value: {{ .Values.clickhouse.secure | quote }}
+            - name: CLICKHOUSE_VERIFY
+              value: {{ .Values.clickhouse.verify | quote }}
+            - name: CLICKHOUSE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.credentials.secretName }}
+                  key: username
+            - name: CLICKHOUSE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.credentials.secretName }}
+                  key: password
+            - name: CLICKHOUSE_DATABASE
+              value: {{ .Values.clickhouse.database | quote }}
+            # SSE transport so the server is reachable over HTTP inside the cluster.
+            - name: CLICKHOUSE_MCP_SERVER_TRANSPORT
+              value: "sse"
+            - name: CLICKHOUSE_MCP_BIND_HOST
+              value: "0.0.0.0"
+            - name: CLICKHOUSE_MCP_BIND_PORT
+              value: {{ .Values.service.port | quote }}
+          livenessProbe:
+            httpGet:
+              path: /mcp
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /mcp
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]

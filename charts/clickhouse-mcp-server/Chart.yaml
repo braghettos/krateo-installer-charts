@@ -1,0 +1,10 @@
+apiVersion: v2
+name: clickhouse-mcp-server
+description: >-
+  ClickHouse MCP server (mcp/clickhouse) exposing list_databases / list_tables /
+  run_select_query over SSE on :8000, so kagent agents can query the observability
+  data in ClickHouse. Packaged as a Krateo composition; replaces obs-stack
+  install.sh phases 4 and 6 (no imperative kubectl).
+type: application
+version: 0.1.0
+appVersion: "0.2.0"

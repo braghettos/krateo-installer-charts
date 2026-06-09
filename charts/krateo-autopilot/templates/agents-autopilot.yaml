@@ -13,8 +13,7 @@ spec:
   declarative:
     deployment:
       env:
-        - name: GOOGLE_GENAI_USE_VERTEXAI
-          value: "0"
+{{- include "krateo-autopilot.genaiEnv" . | nindent 8 }}
     modelConfig: {{ .Values.agents.autopilot.modelConfig }}
     stream: true
     promptTemplate:

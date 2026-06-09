@@ -21,7 +21,7 @@ service:
   port: 8080
 
 clickhouse:
-  url: "http://krateo-clickstack-clickhouse-clickhouse-headless.clickhouse-system.svc:8123"
+  url: "http://krateo-clickstack-clickhouse-clickhouse-headless.krateo-system.svc:8123"
   user: "default"
   passwordSecret:
     name: clickhouse-credentials

@@ -10,8 +10,7 @@ spec:
   declarative:
     deployment:
       env:
-        - name: GOOGLE_GENAI_USE_VERTEXAI
-          value: "0"
+{{- include "krateo-autopilot.genaiEnv" . | nindent 8 }}
     modelConfig: {{ .Values.agents.k8s.modelConfig }}
     stream: true
     a2aConfig:
@@ -77,8 +76,7 @@ spec:
   declarative:
     deployment:
       env:
-        - name: GOOGLE_GENAI_USE_VERTEXAI
-          value: "0"
+{{- include "krateo-autopilot.genaiEnv" . | nindent 8 }}
     modelConfig: {{ .Values.agents.helm.modelConfig }}
     stream: true
     a2aConfig:

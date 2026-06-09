@@ -47,11 +47,19 @@
     },
     "vertexAI": {
       "type": "object",
-      "description": "Vertex AI provider configuration.",
+      "description": "Gemini Vertex AI provider configuration. When enabled, ModelConfigs use provider GeminiVertexAI with Application Default Credentials (no API key) — the pod's GKE node SA must have aiplatform access. secretName is optional (only for explicit SA-key auth).",
       "additionalProperties": false,
       "properties": {
         "enabled": {
           "type": "boolean"
+        },
+        "projectID": {
+          "type": "string",
+          "description": "GCP project ID hosting Vertex AI."
+        },
+        "location": {
+          "type": "string",
+          "description": "Vertex AI region, e.g. us-central1."
         },
         "secretName": {
           "type": "string"

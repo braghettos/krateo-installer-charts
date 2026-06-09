@@ -93,7 +93,7 @@ opentelemetry-collector:
 
     exporters:
       clickhouse:
-        endpoint: "tcp://krateo-clickstack-clickhouse-clickhouse-headless.clickhouse-system.svc:9000"
+        endpoint: "tcp://krateo-clickstack-clickhouse-clickhouse-headless.krateo-system.svc:9000"
         username: "${env:CH_USERNAME}"
         password: "${env:CH_PASSWORD}"
         database: default

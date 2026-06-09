@@ -16,10 +16,18 @@ models:
     model: gemini-2.5-pro
     provider: Gemini
 
-# Vertex AI provider config (optional)
+# Gemini Vertex AI provider config.
+# When enabled, ModelConfigs use provider GeminiVertexAI with Application Default
+# Credentials (no API key / no SA-key file) — the kagent agent pods authenticate to
+# Vertex via the GKE node SA token from the metadata server. The node pool's SA must
+# have an IAM role covering aiplatform.* (e.g. roles/aiplatform.user or roles/editor)
+# and the node pool must run with the cloud-platform OAuth scope.
 vertexAI:
   enabled: false
-  secretName: gcloud-credentials
+  projectID: ""
+  location: us-central1
+  # secretName is only used for explicit SA-key auth; left unset for ADC.
+  secretName: ""
 
 # MCP servers — these are RemoteMCPServer CRDs pointing to existing deployments
 mcpServers:
