@@ -6,12 +6,10 @@
   "properties": {
     "global": {
       "type": "object",
-      "description": "Global values shared across charts.",
       "additionalProperties": true
     },
     "replicaCount": {
-      "type": "integer",
-      "minimum": 0
+      "type": "integer"
     },
     "image": {
       "type": "object",
@@ -24,17 +22,12 @@
           "type": "string"
         },
         "pullPolicy": {
-          "type": "string",
-          "enum": ["Always", "IfNotPresent", "Never"]
+          "type": "string"
         }
       }
     },
     "imagePullSecrets": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": true
-      }
+      "type": "array"
     },
     "nameOverride": {
       "type": "string"
@@ -59,13 +52,10 @@
       "additionalProperties": false,
       "properties": {
         "type": {
-          "type": "string",
-          "enum": ["ClusterIP", "NodePort", "LoadBalancer"]
+          "type": "string"
         },
         "port": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 65535
+          "type": "integer"
         }
       }
     },
@@ -101,7 +91,33 @@
     },
     "resources": {
       "type": "object",
-      "additionalProperties": true
+      "additionalProperties": false,
+      "properties": {
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          }
+        },
+        "requests": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          }
+        }
+      }
     },
     "podAnnotations": {
       "type": "object",
@@ -112,11 +128,7 @@
       "additionalProperties": true
     },
     "tolerations": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": true
-      }
+      "type": "array"
     },
     "affinity": {
       "type": "object",

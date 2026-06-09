@@ -4,10 +4,19 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "global": { "type": "object", "additionalProperties": true },
-    "namespace": { "type": "string" },
-    "oasPath": { "type": "string", "description": "URL of the HyperDX OpenAPI spec consumed by oasgen-provider." },
-    "resourceGroup": { "type": "string", "description": "API group for the generated CRDs." },
+    "global": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "oasPath": {
+      "type": "string"
+    },
+    "resourceGroup": {
+      "type": "string"
+    },
     "resources": {
       "type": "object",
       "additionalProperties": false,
@@ -16,16 +25,24 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "enabled": { "type": "boolean" },
-            "kind": { "type": "string" }
+            "enabled": {
+              "type": "boolean"
+            },
+            "kind": {
+              "type": "string"
+            }
           }
         },
         "alert": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "enabled": { "type": "boolean" },
-            "kind": { "type": "string" }
+            "enabled": {
+              "type": "boolean"
+            },
+            "kind": {
+              "type": "string"
+            }
           }
         }
       }

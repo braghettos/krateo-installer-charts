@@ -1,172 +1,124 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "frontend values",
   "type": "object",
-  "title": "Frontend",
-  "description": "Krateo Frontend blueprint \u2014 full-coverage schema (chart 1.0.10).",
   "additionalProperties": false,
   "properties": {
     "replicaCount": {
-      "type": "integer",
-      "title": "Replica count"
+      "type": "integer"
     },
     "image": {
       "type": "object",
-      "title": "Image",
       "additionalProperties": false,
       "properties": {
         "repository": {
-          "type": "string",
-          "title": "Image repository"
+          "type": "string"
         },
         "pullPolicy": {
-          "type": "string",
-          "title": "Image pull policy",
-          "enum": [
-            "IfNotPresent",
-            "Always",
-            "Never"
-          ]
+          "type": "string"
         },
         "tag": {
-          "type": "string",
-          "title": "Image tag",
-          "description": "Overrides the image tag whose default is the chart appVersion."
+          "type": "string"
         }
       }
     },
     "imagePullSecrets": {
-      "type": "array",
-      "title": "Image pull secrets",
-      "items": {
-        "type": "object"
-      }
+      "type": "array"
     },
     "nameOverride": {
-      "type": "string",
-      "title": "Name override"
+      "type": "string"
     },
     "fullnameOverride": {
-      "type": "string",
-      "title": "Fullname override"
+      "type": "string"
     },
     "serviceAccount": {
       "type": "object",
-      "title": "Service account",
       "additionalProperties": false,
       "properties": {
         "create": {
-          "type": "boolean",
-          "title": "Create service account"
+          "type": "boolean"
         },
         "automount": {
-          "type": "boolean",
-          "title": "Automount service account token"
+          "type": "boolean"
         },
         "annotations": {
           "type": "object",
-          "title": "Service account annotations",
-          "additionalProperties": {
-            "type": "string"
-          }
+          "additionalProperties": true
         },
         "name": {
-          "type": "string",
-          "title": "Service account name"
+          "type": "string"
         }
       }
     },
     "podAnnotations": {
       "type": "object",
-      "title": "Pod annotations",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "additionalProperties": true
     },
     "podLabels": {
       "type": "object",
-      "title": "Pod labels",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "additionalProperties": true
     },
     "podSecurityContext": {
       "type": "object",
-      "title": "Pod security context"
+      "additionalProperties": true
     },
     "securityContext": {
       "type": "object",
-      "title": "Container security context"
+      "additionalProperties": true
     },
     "service": {
       "type": "object",
-      "title": "Service",
       "additionalProperties": false,
       "properties": {
         "annotations": {
           "type": "object",
-          "title": "Service annotations",
-          "additionalProperties": {
-            "type": "string"
-          }
+          "additionalProperties": true
         },
         "type": {
-          "type": "string",
-          "title": "Service type",
-          "enum": [
-            "ClusterIP",
-            "NodePort",
-            "LoadBalancer"
-          ]
+          "type": "string"
         },
         "port": {
-          "type": "integer",
-          "title": "Service port"
+          "type": "integer"
+        },
+        "nodePort": {
+          "type": "integer"
         }
       }
     },
     "ingress": {
       "type": "object",
-      "title": "Ingress",
       "additionalProperties": false,
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "title": "Enable ingress"
+          "type": "boolean"
         },
         "className": {
-          "type": "string",
-          "title": "Ingress class name"
+          "type": "string"
         },
         "annotations": {
           "type": "object",
-          "title": "Ingress annotations",
-          "additionalProperties": {
-            "type": "string"
-          }
+          "additionalProperties": true
         },
         "hosts": {
           "type": "array",
-          "title": "Ingress hosts",
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
               "host": {
-                "type": "string",
-                "title": "Host"
+                "type": "string"
               },
               "paths": {
                 "type": "array",
-                "title": "Paths",
                 "items": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "path": {
-                      "type": "string",
-                      "title": "Path"
+                      "type": "string"
                     },
                     "pathType": {
-                      "type": "string",
-                      "title": "Path type"
+                      "type": "string"
                     }
                   }
                 }
@@ -175,121 +127,105 @@
           }
         },
         "tls": {
-          "type": "array",
-          "title": "TLS configuration",
-          "items": {
-            "type": "object"
-          }
+          "type": "array"
         }
       }
     },
     "resources": {
       "type": "object",
-      "title": "Resources"
+      "additionalProperties": true
     },
     "livenessProbe": {
       "type": "object",
-      "title": "Liveness probe"
+      "additionalProperties": false,
+      "properties": {
+        "httpGet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "port": {
+              "type": "string"
+            }
+          }
+        }
+      }
     },
     "readinessProbe": {
       "type": "object",
-      "title": "Readiness probe"
+      "additionalProperties": false,
+      "properties": {
+        "httpGet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "port": {
+              "type": "string"
+            }
+          }
+        }
+      }
     },
     "autoscaling": {
       "type": "object",
-      "title": "Autoscaling",
       "additionalProperties": false,
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "title": "Enable autoscaling"
+          "type": "boolean"
         },
         "minReplicas": {
-          "type": "integer",
-          "title": "Minimum replicas"
+          "type": "integer"
         },
         "maxReplicas": {
-          "type": "integer",
-          "title": "Maximum replicas"
+          "type": "integer"
         },
         "targetCPUUtilizationPercentage": {
-          "type": "integer",
-          "title": "Target CPU utilization percentage"
-        },
-        "targetMemoryUtilizationPercentage": {
-          "type": "integer",
-          "title": "Target memory utilization percentage"
+          "type": "integer"
         }
       }
     },
     "nodeSelector": {
       "type": "object",
-      "title": "Node selector",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "additionalProperties": true
     },
     "tolerations": {
-      "type": "array",
-      "title": "Tolerations",
-      "items": {
-        "type": "object"
-      }
+      "type": "array"
     },
     "affinity": {
       "type": "object",
-      "title": "Affinity"
+      "additionalProperties": true
     },
     "config": {
       "type": "object",
-      "title": "Frontend runtime config",
-      "description": "Runtime configuration rendered into the frontend ConfigMap (API base URLs and loader routes).",
-      "additionalProperties": {
-        "type": "string"
-      },
+      "additionalProperties": false,
       "properties": {
         "SNOWPLOW_API_BASE_URL": {
-          "type": "string",
-          "title": "Snowplow API base URL"
+          "type": "string"
         },
         "AUTHN_API_BASE_URL": {
-          "type": "string",
-          "title": "Authn API base URL"
+          "type": "string"
         },
         "EVENTS_PUSH_API_BASE_URL": {
-          "type": "string",
-          "title": "Events push API base URL"
+          "type": "string"
         },
         "EVENTS_API_BASE_URL": {
-          "type": "string",
-          "title": "Events API base URL"
+          "type": "string"
         },
         "SMITHERY_API_BASE_URL": {
-          "type": "string",
-          "title": "Smithery API base URL"
+          "type": "string"
         },
         "INIT": {
-          "type": "string",
-          "title": "Init route"
+          "type": "string"
         },
         "ROUTES_LOADER": {
-          "type": "string",
-          "title": "Routes loader route"
+          "type": "string"
         }
       }
-    },
-    "env": {
-      "type": "object",
-      "title": "Environment variables",
-      "description": "Free-form extra environment variables for the frontend container.",
-      "additionalProperties": {
-        "type": "string"
-      }
-    },
-    "global": {
-      "type": "object",
-      "title": "Global values",
-      "description": "Helm global values (injected when used as a subchart)."
     }
   }
 }

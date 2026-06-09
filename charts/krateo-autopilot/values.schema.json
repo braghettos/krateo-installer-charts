@@ -4,18 +4,11 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "global": {
-      "type": "object",
-      "description": "Global values shared across charts.",
-      "additionalProperties": true
-    },
     "namespace": {
-      "type": "string",
-      "description": "Namespace where the autopilot resources are installed."
+      "type": "string"
     },
     "geminiApiKey": {
       "type": "object",
-      "description": "Reference to an existing secret holding the Gemini API key.",
       "additionalProperties": false,
       "properties": {
         "secretName": {
@@ -28,7 +21,6 @@
     },
     "models": {
       "type": "object",
-      "description": "Model configurations, keyed by an arbitrary alias.",
       "additionalProperties": {
         "type": "object",
         "additionalProperties": true,
@@ -47,19 +39,16 @@
     },
     "vertexAI": {
       "type": "object",
-      "description": "Gemini Vertex AI provider configuration. When enabled, ModelConfigs use provider GeminiVertexAI with Application Default Credentials (no API key) — the pod's GKE node SA must have aiplatform access. secretName is optional (only for explicit SA-key auth).",
       "additionalProperties": false,
       "properties": {
         "enabled": {
           "type": "boolean"
         },
         "projectID": {
-          "type": "string",
-          "description": "GCP project ID hosting Vertex AI."
+          "type": "string"
         },
         "location": {
-          "type": "string",
-          "description": "Vertex AI region, e.g. us-central1."
+          "type": "string"
         },
         "secretName": {
           "type": "string"
@@ -68,7 +57,6 @@
     },
     "mcpServers": {
       "type": "object",
-      "description": "Remote MCP servers, keyed by an arbitrary alias.",
       "additionalProperties": {
         "type": "object",
         "additionalProperties": true,
@@ -87,7 +75,6 @@
     },
     "agents": {
       "type": "object",
-      "description": "Agents to deploy, keyed by agent name.",
       "additionalProperties": {
         "type": "object",
         "additionalProperties": true,
@@ -97,14 +84,16 @@
           },
           "modelConfig": {
             "type": "string"
+          },
+          "skillRef": {
+            "type": "string"
           }
         }
       }
     },
     "prompts": {
       "type": "object",
-      "description": "Prompts configuration.",
-      "additionalProperties": true,
+      "additionalProperties": false,
       "properties": {
         "language": {
           "type": "string"

@@ -7,5 +7,5 @@ description: >-
   *Configuration resources) driving the HyperDX REST API. This replaces the
   imperative obs-stack pod-restart-alert/*.sh scripts with declarative resources.
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "2.27.0"
