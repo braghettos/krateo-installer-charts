@@ -53,17 +53,18 @@ spec:
               value: "0.0.0.0"
             - name: CLICKHOUSE_MCP_BIND_PORT
               value: {{ .Values.service.port | quote }}
+          # TCP probe: the SSE transport serves /sse (a streaming endpoint), and /mcp
+          # 404s — an httpGet probe would keep the pod NotReady and drop it from the
+          # Service endpoints. Port-open is a reliable readiness signal here.
           livenessProbe:
-            httpGet:
-              path: /mcp
+            tcpSocket:
               port: {{ .Values.service.port }}
             initialDelaySeconds: 20
             periodSeconds: 15
             timeoutSeconds: 5
             failureThreshold: 3
           readinessProbe:
-            httpGet:
-              path: /mcp
+            tcpSocket:
               port: {{ .Values.service.port }}
             initialDelaySeconds: 10
             periodSeconds: 10
