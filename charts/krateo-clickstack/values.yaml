@@ -41,6 +41,13 @@ hyperdxLoadBalancer:
 # Upstream clickstack passthrough (verbatim from obs-stack/clickstack/values.yaml)
 # ---------------------------------------------------------------------------
 clickstack:
+  # Stable resource names regardless of the Helm release name. Krateo's core-provider
+  # installs a composition's release as "<composition-name>-<random>", so without this
+  # the ClickHouse/Keeper/Mongo Services would be named after that random release name
+  # and the otel-collector / mcp / sse-proxy references (which expect
+  # krateo-clickstack-clickhouse-clickhouse-headless) would not resolve.
+  fullnameOverride: krateo-clickstack
+
   clickhouse:
     enabled: true
     # ClickHouse 26.3 LTS (Map bucketed serialization, materialized CTEs, RBAC fixes).

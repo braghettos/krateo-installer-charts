@@ -19,7 +19,6 @@ spec:
   selector:
     app.kubernetes.io/name: clickstack
     app.kubernetes.io/instance: {{ .Release.Name }}
-    app: {{ .Release.Name }}
   ports:
     - name: app
       port: {{ .Values.hyperdxLoadBalancer.port }}

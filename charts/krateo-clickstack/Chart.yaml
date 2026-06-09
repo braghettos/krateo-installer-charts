@@ -7,7 +7,7 @@ description: >-
   otel-clickhouse credentials Secret, and a HyperDX LoadBalancer Service.
   Replaces obs-stack install.sh phases 1, 2, 2b and 2c (no imperative kubectl).
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "3.0.0"
 dependencies:
   - name: clickstack
