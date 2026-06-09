@@ -33,8 +33,8 @@ vertexAI:
 mcpServers:
   clickhouse:
     enabled: true
-    url: http://clickhouse-mcp-server.krateo-system:8000/sse
-    protocol: SSE
+    url: http://clickhouse-mcp-server.krateo-system:8000/mcp
+    protocol: STREAMABLE_HTTP
   github:
     enabled: true
     url: http://github-mcp-server.krateo-system:3000/mcp

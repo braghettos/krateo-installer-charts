@@ -16,6 +16,10 @@ service:
   type: ClusterIP
   port: 8000
 
+# MCP transport. "http" = Streamable-HTTP at /mcp (kagent STREAMABLE_HTTP compatible).
+# "sse" serves /sse but kagent's SSE client can't complete the handshake.
+transport: http
+
 # ClickHouse connection. Host points at the ClickStack ClickHouse headless
 # Service (HTTP interface, port 8123) in the clickhouse namespace.
 clickhouse:

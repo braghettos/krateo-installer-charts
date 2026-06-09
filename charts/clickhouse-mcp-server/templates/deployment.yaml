@@ -46,9 +46,11 @@ spec:
                   key: password
             - name: CLICKHOUSE_DATABASE
               value: {{ .Values.clickhouse.database | quote }}
-            # SSE transport so the server is reachable over HTTP inside the cluster.
+            # Streamable-HTTP transport (serves /mcp) so kagent RemoteMCPServer
+            # (protocol STREAMABLE_HTTP) can handshake it. The image's "sse" transport
+            # serves /sse but kagent's SSE client 404s on the message write.
             - name: CLICKHOUSE_MCP_SERVER_TRANSPORT
-              value: "sse"
+              value: {{ .Values.transport | quote }}
             - name: CLICKHOUSE_MCP_BIND_HOST
               value: "0.0.0.0"
             - name: CLICKHOUSE_MCP_BIND_PORT
