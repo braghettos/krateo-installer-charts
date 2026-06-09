@@ -169,6 +169,13 @@ spec:
           apiGroup: kagent.dev
           kind: RemoteMCPServer
           name: clickhouse-mcp-server
+          # Explicit toolNames are required for kagent to declare the MCP tools to the
+          # agent's model; without them the tools are discovered but never declared
+          # (the model then "calls an undeclared function").
+          toolNames:
+            - list_databases
+            - list_tables
+            - run_select_query
       - type: McpServer
         mcpServer:
           apiGroup: kagent.dev
