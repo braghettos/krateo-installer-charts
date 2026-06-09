@@ -1,0 +1,11 @@
+apiVersion: v2
+name: kagent-crds
+description: >-
+  kagent.dev CRDs (Agent, ModelConfig, ModelProviderConfig, RemoteMCPServer, ToolServer,
+  Memory, AgentHarness, SandboxAgent) shipped in crds/ so Helm pre-installs them before
+  rendering — lets the installer umbrella self-bootstrap on a bare cluster (the kagent
+  operator renders default-model-config + kagent-tool-server at install, which need these).
+  Dedicated CRD chart (golden rule). Mirrors upstream kagent-dev/kagent-crds 0.9.6.
+type: application
+version: 0.9.6
+appVersion: "0.9.6"
