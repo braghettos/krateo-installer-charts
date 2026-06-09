@@ -186,6 +186,9 @@
         },
         "targetCPUUtilizationPercentage": {
           "type": "integer"
+        },
+        "targetMemoryUtilizationPercentage": {
+          "type": "integer"
         }
       }
     },
@@ -226,6 +229,10 @@
           "type": "string"
         }
       }
+    },
+    "env": {
+      "type": "object",
+      "additionalProperties": true
     }
   }
 }
