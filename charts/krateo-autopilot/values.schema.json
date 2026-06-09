@@ -5,7 +5,8 @@
   "additionalProperties": false,
   "properties": {
     "namespace": {
-      "type": "string"
+      "type": "string",
+      "description": "Namespace where the autopilot resources are installed."
     },
     "geminiApiKey": {
       "type": "object",
@@ -17,7 +18,8 @@
         "secretKey": {
           "type": "string"
         }
-      }
+      },
+      "description": "Reference to an existing secret holding the Gemini API key."
     },
     "models": {
       "type": "object",
@@ -35,7 +37,8 @@
             "type": "string"
           }
         }
-      }
+      },
+      "description": "Model configurations, keyed by an arbitrary alias."
     },
     "vertexAI": {
       "type": "object",
@@ -45,15 +48,18 @@
           "type": "boolean"
         },
         "projectID": {
-          "type": "string"
+          "type": "string",
+          "description": "GCP project ID hosting Vertex AI."
         },
         "location": {
-          "type": "string"
+          "type": "string",
+          "description": "Vertex AI region, e.g. us-central1."
         },
         "secretName": {
           "type": "string"
         }
-      }
+      },
+      "description": "Gemini Vertex AI provider configuration. When enabled, ModelConfigs use provider GeminiVertexAI with Application Default Credentials (no API key) \u2014 the pod's GKE node SA must have aiplatform access. secretName is optional (only for explicit SA-key auth)."
     },
     "mcpServers": {
       "type": "object",
@@ -71,7 +77,8 @@
             "type": "string"
           }
         }
-      }
+      },
+      "description": "Remote MCP servers, keyed by an arbitrary alias."
     },
     "agents": {
       "type": "object",
@@ -89,7 +96,8 @@
             "type": "string"
           }
         }
-      }
+      },
+      "description": "Agents to deploy, keyed by agent name."
     },
     "prompts": {
       "type": "object",
@@ -98,7 +106,8 @@
         "language": {
           "type": "string"
         }
-      }
+      },
+      "description": "Prompts configuration."
     }
   }
 }

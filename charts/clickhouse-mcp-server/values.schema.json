@@ -9,7 +9,8 @@
       "additionalProperties": true
     },
     "replicaCount": {
-      "type": "integer"
+      "type": "integer",
+      "minimum": 0
     },
     "image": {
       "type": "object",
@@ -22,7 +23,12 @@
           "type": "string"
         },
         "pullPolicy": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
         }
       }
     },
@@ -31,15 +37,27 @@
       "additionalProperties": false,
       "properties": {
         "type": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ]
         },
         "port": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
         }
       }
     },
     "transport": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "http",
+        "sse",
+        "stdio"
+      ]
     },
     "clickhouse": {
       "type": "object",
@@ -49,7 +67,9 @@
           "type": "string"
         },
         "port": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
         },
         "secure": {
           "type": "boolean"

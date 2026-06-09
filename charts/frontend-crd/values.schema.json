@@ -3,5 +3,6 @@
   "title": "frontend-crd values",
   "type": "object",
   "additionalProperties": false,
-  "properties": {}
+  "properties": {},
+  "description": "Dedicated CRD chart for frontend (golden rule: CRDs in a separate chart, separate lifecycle). No tunable values."
 }

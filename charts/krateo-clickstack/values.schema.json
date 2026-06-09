@@ -11,7 +11,8 @@
         "storageClassName": {
           "type": "string"
         }
-      }
+      },
+      "description": "Global values propagated to clickstack and its subcharts."
     },
     "httpHandlers": {
       "type": "object",
@@ -51,7 +52,9 @@
           "type": "string"
         },
         "port": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
         }
       }
     },
@@ -230,7 +233,8 @@
             }
           }
         }
-      }
+      },
+      "description": "Upstream clickstack chart values, passed through opaquely."
     }
   }
 }

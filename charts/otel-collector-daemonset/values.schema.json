@@ -6,14 +6,20 @@
   "properties": {
     "global": {
       "type": "object",
-      "additionalProperties": true
+      "additionalProperties": true,
+      "description": "Global values shared across charts."
     },
     "opentelemetry-collector": {
       "type": "object",
       "additionalProperties": true,
       "properties": {
         "mode": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "deployment",
+            "daemonset",
+            "statefulset"
+          ]
         },
         "image": {
           "type": "object",
@@ -519,7 +525,8 @@
             }
           }
         }
-      }
+      },
+      "description": "Values forwarded to the upstream opentelemetry-collector subchart."
     }
   }
 }

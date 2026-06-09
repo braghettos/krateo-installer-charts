@@ -12,10 +12,12 @@
       "type": "string"
     },
     "oasPath": {
-      "type": "string"
+      "type": "string",
+      "description": "URL of the HyperDX OpenAPI spec consumed by oasgen-provider."
     },
     "resourceGroup": {
-      "type": "string"
+      "type": "string",
+      "description": "API group for the generated CRDs."
     },
     "resources": {
       "type": "object",
