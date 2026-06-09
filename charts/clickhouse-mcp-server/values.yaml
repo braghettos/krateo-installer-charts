@@ -8,7 +8,8 @@ replicaCount: 2
 
 image:
   repository: mcp/clickhouse
-  tag: "0.2.0"
+  # docker.io/mcp/clickhouse only publishes the `latest` tag.
+  tag: "latest"
   pullPolicy: IfNotPresent
 
 service:

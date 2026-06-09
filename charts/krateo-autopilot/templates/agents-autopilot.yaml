@@ -7,9 +7,11 @@ metadata:
 spec:
   type: Declarative
   description: "Orchestrator for Krateo PlatformOps — routes user requests to the appropriate specialist sub-agent and installs Krateo"
+{{- if .Values.agents.autopilot.skillRef }}
   skills:
     refs:
-      - gcr.io/neon-481711/krateo-install-skill:latest
+      - {{ .Values.agents.autopilot.skillRef }}
+{{- end }}
   declarative:
     deployment:
       env:

@@ -45,6 +45,9 @@ agents:
   autopilot:
     enabled: true
     modelConfig: gemini-flash
+    # Optional kagent skill OCI image (skills-init pulls it anonymously, so it must be a
+    # public registry). Empty by default — set to your own skill image if you have one.
+    skillRef: ""
   k8s:
     enabled: true
     modelConfig: gemini-flash
