@@ -4,7 +4,13 @@
 
 global: {}
 
-replicaCount: 2
+# Single replica: the Streamable-HTTP transport uses STATEFUL sessions (the session
+# is created on the pod that handles `initialize`). With >1 replica behind the ClusterIP
+# Service, follow-up requests round-robin to a different pod and get
+# "400 No valid session ID provided", so the agent's list_tools times out. One replica
+# keeps every session on the same pod. (For HA, run >1 replica WITH the Service set to
+# sessionAffinity: ClientIP, or a stateless-HTTP MCP build.)
+replicaCount: 1
 
 image:
   repository: mcp/clickhouse
