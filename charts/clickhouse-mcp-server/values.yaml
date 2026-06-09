@@ -25,13 +25,15 @@ clickhouse:
   verify: false
   database: default
 
-# Credentials Secret the MCP server uses to connect to ClickHouse.
-# Default ClickHouse user with empty password (read-only SELECT access).
+# Credentials Secret the MCP server uses to connect to ClickHouse. Uses the ClickStack
+# `otelcollector` user (provisioned by krateo-clickstack with profile=default), which is
+# guaranteed to exist and authenticate — unlike the bare `default` user whose access
+# ClickStack may restrict.
 credentials:
   enabled: true
   secretName: mcp-clickhouse-credentials
-  username: default
-  password: ""
+  username: otelcollector
+  password: otelcollectorpass
 
 # Krateo endpointRef Secret for the ClickHouse HTTP interface, consumed by the
 # portal composition-events RESTAction (replaces install.sh phase 4). Created in

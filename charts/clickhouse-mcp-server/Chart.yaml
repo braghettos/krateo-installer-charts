@@ -6,5 +6,5 @@ description: >-
   data in ClickHouse. Packaged as a Krateo composition; replaces obs-stack
   install.sh phases 4 and 6 (no imperative kubectl).
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: "0.2.0"

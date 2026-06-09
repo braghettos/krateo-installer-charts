@@ -71,8 +71,8 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           securityContext:
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
+            # The upstream mcp/clickhouse:latest image runs as root and writes to its
+            # working dir, so runAsNonRoot/readOnlyRootFilesystem are not enforced here.
             allowPrivilegeEscalation: false
             capabilities:
               drop: [ALL]
