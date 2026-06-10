@@ -14,7 +14,16 @@
       "type": "object",
       "additionalProperties": true,
       "title": "Upstream kagent passthrough",
-      "description": "Values forwarded to the upstream kagent subchart (providers, per-agent enabled flags, tool server, etc.)."
+      "description": "Values forwarded to the upstream kagent subchart (providers, per-agent enabled flags, tool server, etc.).",
+      "properties": {
+        "providers": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "default": { "type": "string" }
+          }
+        }
+      }
     }
   }
 }

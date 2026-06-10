@@ -9,7 +9,7 @@ description: >-
   CRs render — no crds/ pre-install needed. Clean teardown: the composition's helm release is
   uninstalled by core-provider on delete. No fork of upstream.
 type: application
-version: 0.9.7
+version: 0.9.8
 appVersion: "0.9.6"
 dependencies:
   - name: kagent

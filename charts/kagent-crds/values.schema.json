@@ -14,7 +14,16 @@
       "type": "object",
       "additionalProperties": true,
       "title": "Upstream kagent-crds passthrough",
-      "description": "Values forwarded to the upstream kagent-crds subchart (e.g. kmcp.enabled)."
+      "description": "Values forwarded to the upstream kagent-crds subchart (e.g. kmcp.enabled).",
+      "properties": {
+        "kmcp": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "enabled": { "type": "boolean" }
+          }
+        }
+      }
     }
   }
 }
