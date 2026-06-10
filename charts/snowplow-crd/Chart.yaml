@@ -1,0 +1,16 @@
+apiVersion: v2
+name: snowplow-crd
+description: >-
+  Snowplow (restactions.templates.krateo.io) CRDs, as a Krateo composition. Thin
+  dependency-WRAPPER over the UNFORKED upstream krateoplatformops snowplow-crd chart (CRDs in
+  templates/ -> helm-owned -> deleted on teardown). Adds only the values.schema.json that
+  core-provider requires. Dep aliased to `crds` so Helm's surfaced subchart key doesn't
+  pascalize to this chart's Kind (SnowplowCrd) and collide in crdgen. No fork.
+type: application
+version: 0.20.6
+appVersion: "0.20.6"
+dependencies:
+  - name: snowplow-crd
+    alias: crds
+    version: "0.20.6"
+    repository: https://krateoplatformops.github.io/helm-charts

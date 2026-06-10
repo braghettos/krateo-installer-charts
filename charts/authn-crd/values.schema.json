@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "authn-crd values",
+  "description": "Dependency-wrapper for the upstream authn-crd chart (aliased to `crds`). No tunables.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "global": { "type": "object", "title": "Global values" },
+    "crds": { "type": "object", "title": "Upstream authn-crd passthrough (empty)" }
+  }
+}

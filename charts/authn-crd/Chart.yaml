@@ -1,0 +1,16 @@
+apiVersion: v2
+name: authn-crd
+description: >-
+  Krateo authn (users/ldap/oauth/oidc configs) CRDs, as a Krateo composition. Thin dependency-WRAPPER over the UNFORKED upstream
+  krateoplatformops authn-crd chart (CRDs in templates/ -> helm-owned -> deleted on teardown). Adds
+  only the values.schema.json core-provider requires. Dep aliased to `crds` so Helm's
+  surfaced subchart key doesn't pascalize to this chart's Kind (AuthnCrd) and collide in crdgen.
+  No fork.
+type: application
+version: 0.22.2
+appVersion: "0.22.2"
+dependencies:
+  - name: authn-crd
+    alias: crds
+    version: "0.22.2"
+    repository: https://krateoplatformops.github.io/helm-charts
