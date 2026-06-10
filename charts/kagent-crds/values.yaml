@@ -1,2 +1,4 @@
 # kagent-crds wrapper — no overrides; the upstream kagent-crds subchart defaults apply
-# (kmcp.enabled: true → also installs the kmcp CRDs). Forward overrides under `kagent-crds:`.
+# (kmcp.enabled: true → also installs the kmcp CRDs). No passthrough key is exposed because
+# a property named "kagent-crds" would pascalize to the chart's own Kind (KagentCrds) and
+# collide in core-provider's crdgen, producing an invalid CRD.

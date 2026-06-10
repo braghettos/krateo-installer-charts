@@ -1,10 +1,10 @@
-# kagent wrapper — values forwarded to the upstream `kagent` subchart.
+# kagent wrapper — values forwarded to the upstream kagent subchart, which is aliased to
+# `kagentapp` (a key named `kagent` would collide with this chart's Kind in crdgen).
 # Operator + tool server only: disable the bundled sample agents and sample MCP servers
 # (they collide with krateo-autopilot's k8s-agent/helm-agent and add pods). The kagent.dev
 # CRDs are installed by the kagent-crds composition (a dependency), so by the time this
 # renders its CRs they're already established.
-kagent:
-  # operator only; agents bring their own ModelConfig
+kagentapp:
   providers:
     default: ""
   k8s-agent:

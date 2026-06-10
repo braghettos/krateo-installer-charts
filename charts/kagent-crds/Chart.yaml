@@ -8,9 +8,13 @@ description: >-
   Ready, so the CRDs are installed AND established before any kagent CR renders — replacing
   the old crds/ pre-install hack with composition dependency ordering. No fork of upstream.
 type: application
-version: 0.9.8
+version: 0.9.9
 appVersion: "0.9.6"
 dependencies:
+  # Aliased to `crds`: Helm surfaces the subchart's values under its dependency key and
+  # validates them against this chart's values.schema.json, but a key named "kagent-crds"
+  # pascalizes to this chart's own Kind (KagentCrds) and collides in core-provider's crdgen.
   - name: kagent-crds
+    alias: crds
     version: "0.9.6"
     repository: oci://ghcr.io/kagent-dev/kagent/helm
