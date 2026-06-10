@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "kagent values",
+  "description": "Dependency-wrapper for the upstream kagent chart. Passes values through to the upstream subchart under the `kagent` key.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "global": {
+      "type": "object",
+      "title": "Global values",
+      "description": "Helm global values propagated to the upstream subchart."
+    },
+    "kagent": {
+      "type": "object",
+      "additionalProperties": true,
+      "title": "Upstream kagent passthrough",
+      "description": "Values forwarded to the upstream kagent subchart (providers, per-agent enabled flags, tool server, etc.)."
+    }
+  }
+}

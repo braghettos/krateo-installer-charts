@@ -1,1 +1,20 @@
-{ "$schema": "http://json-schema.org/draft-07/schema#", "title": "kagent-crds values", "type": "object", "additionalProperties": true }
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "kagent-crds values",
+  "description": "Dependency-wrapper for the upstream kagent-crds chart. No tunables of its own; passes through to the upstream subchart.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "global": {
+      "type": "object",
+      "title": "Global values",
+      "description": "Helm global values propagated to the upstream subchart."
+    },
+    "kagent-crds": {
+      "type": "object",
+      "additionalProperties": true,
+      "title": "Upstream kagent-crds passthrough",
+      "description": "Values forwarded to the upstream kagent-crds subchart (e.g. kmcp.enabled)."
+    }
+  }
+}

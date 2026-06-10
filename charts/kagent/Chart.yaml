@@ -1,0 +1,17 @@
+apiVersion: v2
+name: kagent
+description: >-
+  kagent agentic operator (controller + tool server) for the Krateo stack, packaged as a
+  Krateo composition. Thin dependency-WRAPPER over the UNFORKED upstream kagent chart; its
+  default values disable kagent's bundled sample agents + sample MCP servers (they collide
+  with krateo-autopilot's agents and add pods). Depends (via the installer's component graph)
+  on the kagent-crds composition, so the kagent.dev CRDs are established before the operator's
+  CRs render — no crds/ pre-install needed. Clean teardown: the composition's helm release is
+  uninstalled by core-provider on delete. No fork of upstream.
+type: application
+version: 0.9.7
+appVersion: "0.9.6"
+dependencies:
+  - name: kagent
+    version: "0.9.6"
+    repository: oci://ghcr.io/kagent-dev/kagent/helm

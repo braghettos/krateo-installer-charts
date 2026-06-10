@@ -1,0 +1,2 @@
+# kagent-crds wrapper — no overrides; the upstream kagent-crds subchart defaults apply
+# (kmcp.enabled: true → also installs the kmcp CRDs). Forward overrides under `kagent-crds:`.

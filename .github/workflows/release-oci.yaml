@@ -40,7 +40,7 @@ jobs:
             echo "::group::Releasing chart ${name}"
             if grep -q '^dependencies:' "${dir}Chart.yaml"; then
               echo "Building dependencies for ${name}"
-              helm dependency build "${dir}"
+              helm dependency update "${dir}"
             fi
             helm package "${dir}" --destination .packaged
             pkg="$(ls .packaged/${name}-*.tgz | head -n1)"
