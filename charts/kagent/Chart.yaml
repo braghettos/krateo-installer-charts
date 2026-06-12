@@ -9,8 +9,11 @@ description: >-
   CRs render — no crds/ pre-install needed. Clean teardown: the composition's helm release is
   uninstalled by core-provider on delete. No fork of upstream.
 type: application
-version: 0.9.9
-appVersion: "0.9.6"
+# version = this Krateo wrapper's own release stream (independent of kagent's numbering, which
+# previously caused confusion when it read like a kagent version). appVersion = the upstream
+# kagent version actually deployed.
+version: 0.1.0
+appVersion: "0.9.7"
 dependencies:
   # Aliased to `kagentapp` so the values passthrough key is NOT "kagent" — a property named
   # "kagent" pascalizes to this chart's own Kind (Kagent) and collides in core-provider's
@@ -18,5 +21,5 @@ dependencies:
   # values from `kagentapp:` instead.
   - name: kagent
     alias: kagentapp
-    version: "0.9.6"
+    version: "0.9.7"
     repository: oci://ghcr.io/kagent-dev/kagent/helm
