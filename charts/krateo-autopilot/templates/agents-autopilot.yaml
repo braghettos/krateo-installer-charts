@@ -122,6 +122,16 @@ spec:
           kind: Agent
           apiGroup: kagent.dev
       {{- end }}
+      {{- /* extraAgents: blueprint-contributed specialists (a component or the installer ships
+             its own Agent and registers it here). The orchestrator stays the single mandatory
+             entry point; these are reachable only through this A2A routing. */}}
+      {{- range .Values.extraAgents }}
+      - type: Agent
+        agent:
+          name: {{ .name }}
+          kind: {{ .kind | default "Agent" }}
+          apiGroup: {{ .apiGroup | default "kagent.dev" }}
+      {{- end }}
     context:
       compaction:
         compactionInterval: 5

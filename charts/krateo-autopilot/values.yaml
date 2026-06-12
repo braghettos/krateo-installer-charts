@@ -94,3 +94,11 @@ agents:
 # Prompts language
 prompts:
   language: eng
+
+# Extra A2A sub-agents to register on the orchestrator — component/blueprint-contributed
+# specialists (e.g. the installer's krateo-installer-agent). The orchestrator stays the
+# single mandatory entry point; these are reachable only through its routing. Each entry:
+# name (required), optional kind (default Agent) and apiGroup (default kagent.dev). Unset =
+# none. Example:
+#   extraAgents:
+#     - name: krateo-installer-agent

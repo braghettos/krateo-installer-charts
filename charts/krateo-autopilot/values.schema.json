@@ -117,6 +117,28 @@
       "type": "object",
       "additionalProperties": true,
       "description": "Helm global values (injected by the composition runtime)."
+    },
+    "extraAgents": {
+      "type": "array",
+      "description": "Extra A2A sub-agents to register on the orchestrator (component/blueprint-contributed specialists, e.g. the installer's krateo-installer-agent). The orchestrator stays the single mandatory entry point; these are reachable only via its routing.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "apiGroup": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
