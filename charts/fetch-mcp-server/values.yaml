@@ -1,0 +1,11 @@
+namespace: krateo-system
+# The reference MCP fetch server (stdio); kmcp deploys it and wraps it to HTTP.
+image: mcp/fetch
+imagePullPolicy: IfNotPresent
+port: 3000
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 256Mi

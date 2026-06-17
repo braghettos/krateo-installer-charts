@@ -1,0 +1,17 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: fetch-mcp-server
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: fetch-mcp-server
+    app.kubernetes.io/part-of: krateo
+spec:
+  deployment:
+    image: {{ .Values.image }}
+    imagePullPolicy: {{ .Values.imagePullPolicy }}
+    port: {{ .Values.port }}
+    resources:
+{{ toYaml .Values.resources | indent 6 }}
+  transportType: stdio
+  stdioTransport: {}

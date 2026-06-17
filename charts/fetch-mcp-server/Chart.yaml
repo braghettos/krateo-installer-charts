@@ -1,0 +1,19 @@
+apiVersion: v2
+name: fetch-mcp-server
+description: >-
+  Tokenless HTTP fetch MCP server (mcp/fetch): GETs a URL and returns its content as markdown, so
+  kagent agents can read their version-pinned docs/llms.txt from public raw.githubusercontent.com
+  URLs with NO token/auth. Packaged as a Krateo composition — ships a kagent MCPServer CR that kmcp
+  runs and exposes over HTTP. No credentials; reads public URLs only.
+type: application
+version: 0.1.0
+appVersion: "latest"
+home: https://krateo.io
+icon: https://github.com/krateoplatformops/krateo/blob/main/docs/media/logo.svg
+keywords:
+  - krateo
+  - kagent
+  - mcp
+  - fetch
+sources:
+  - https://github.com/braghettos/krateo-installer-charts
