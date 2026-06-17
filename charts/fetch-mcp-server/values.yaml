@@ -1,6 +1,9 @@
 namespace: krateo-system
 # The reference MCP fetch server (stdio); kmcp deploys it and wraps it to HTTP.
 image: mcp/fetch
+# The stdio server binary kmcp/agentgateway spawns inside the image (mcp/fetch entrypoint).
+# REQUIRED: without it the generated gateway config has stdio.cmd="" and every /mcp 500s.
+cmd: mcp-server-fetch
 imagePullPolicy: IfNotPresent
 port: 3000
 resources:
