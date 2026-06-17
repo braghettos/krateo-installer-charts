@@ -9,6 +9,7 @@ metadata:
 spec:
   deployment:
     image: {{ .Values.image }}
+    cmd: {{ .Values.cmd }}
     imagePullPolicy: {{ .Values.imagePullPolicy }}
     port: {{ .Values.port }}
     resources:
