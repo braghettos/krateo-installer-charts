@@ -9,11 +9,17 @@ type: application
 version: 0.1.1
 appVersion: "latest"
 home: https://krateo.io
-icon: https://github.com/krateoplatformops/krateo/blob/main/docs/media/logo.svg
+icon: https://raw.githubusercontent.com/krateoplatformops/krateo/main/docs/media/logo.svg
 keywords:
   - krateo
   - kagent
   - mcp
   - fetch
+  - http
 sources:
   - https://github.com/braghettos/krateo-installer-charts
+annotations:
+  krateo.io/category: generator
+  krateo.io/maturity: beta
+  krateo.io/display-name: Fetch MCP Server
+  krateoSupportedVersion: ">= 2.5.1"
